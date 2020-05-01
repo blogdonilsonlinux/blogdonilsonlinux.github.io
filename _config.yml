@@ -1,0 +1,71 @@
+lang: "pt_br"
+
+# jekyll-seo-tag
+title: Blog do Nilsonlinux
+author: Nilsonlinux
+description: Blog com novidades do mundo linux
+logo: /assets/img/logo.png
+social:
+  links:
+    - https://github.com/blogdonilsonlinux
+webmaster_verifications:
+google: UA-122784671-2
+yandex: 47c6cc58c9957d71
+
+google_analytics: 122784671
+ya_metrika: 62264842
+
+repo_url: https://github.com/blogdonilsonlinux/blogdonilsonlinux.github.io
+
+# Page settings
+permalink: /:title/          # see https://jekyllrb.com/docs/permalinks/
+date_format: "%d.%m.%Y"     # see http://shopify.github.io/liquid/filters/date/
+paginate: 8                 # use "layout: paginate" in the index.html to enable pagination
+
+# Theme settings
+hide_title: true            # remove site heading in the header
+hide_footer: false           # hide the "previous" and "next" links at the end of each post
+dark_theme: true            # use the dark mode as default
+dark_header: false           # keep the header dark
+dark_footer: true           # keep the footer dark
+# style: minimal             # use a simpler style inspired by the minima theme
+
+navigation:                  # site navigation in the header. / & _pages
+  - Início: /
+  - sobre.md
+  - tags.md
+  - linha_do_tempo.md
+  # - README.md
+  # - Telegram: https://t.me/nl       # linking external sites is also supported
+
+icons:                      # icons in the header, see http://fontawesome.com/icons
+  # linux: https://nilsonlinux.github.io
+  twitter: https://twitter.com/blogdonilsonlinux
+  reddit: https://www.reddit.com/user/blogdonilsonlinux
+  telegram-plane: https://t.me/blogdonilsonlinux
+  # youtube: https://www.youtube.com/nilsonlinux?sub_confirmation=1
+  # keybase: https://keybase.io/cvc
+  github: https://github.com/blogdonilsonlinux
+  vk: https://vk.com/blogdonilsonlinux
+  rss: /feed.xml
+  # envelope: "mailto:blogdonilsonlinux@gmail.com"
+
+tag_page: "/tags/"
+
+include: ["_pages"]
+
+comments:
+  disqus: "nilsonlinux"
+
+sass:
+  style: compressed
+  sass_dir: _sass
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-mentions
+  - jekyll-redirect-from
+  - jemoji
