@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}" class="{% if site.dark_theme %}dark{% else %}light{% endif %}">
+{% include head.html %}
+<body>
+  <header class="{% if site.dark_header %}dark{% endif %}">
+    {% unless site.hide_title or site.style == "minimal" %}
+    <h1><a href="{{ "/" | relative_url }}">{{ site.title | escape }}</a></h1>
+    {% endunless %}
+    {% if site.navigation %}
+    <nav>
+      {% for path in site.navigation %}
+      {% if path.first %}
+      <a href="{{ path.first[1] }}">{{ path.first[0] }}</a>
+      {% else %}
+      {% assign node = site.pages | where: "name", path | first %}
+      <a href="{{ node.url | relative_url }}">{{ node.title }}</a>
+      {% endif %}
+      {% endfor %}
+      <a href="#search">Pesquisar</a>
+    </nav>
+    {% endif %}
+    {% if site.icons %}
+    <nav>
+      {% for link in site.icons %}
+      <a target="_blank" class="icon" href="{{ link[1] }}"><svg><use xlink:href="{{ "/assets/fontawesome/icons.svg" | relative_url }}#{{ link[0] }}"></use></svg></a>
+      {% endfor %}
+    </nav>
+    {% endif %}
+  </header>
+  {{ content }}
+  <!-- Search Form popup -->
+  <div id="search">
+    <span class="close">x</span>
+    <form role="search" id="searchform" action="/search/" method="get">
+      <input value="" name="q" type="search" placeholder="Pesquisar" required>
+    </form>
+  </div>
+  <div id="scrollup">&uarr;</div>
+
+  <script src="{{ '/assets/js/jquery.min.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/magnific-popup/jquery.magnific-popup.min.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/bootstrap.min.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+  {% if site.ya_metrika %}
+  <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym({{ site.ya_metrika }}, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/{{ site.ya_metrika }}" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  {% endif %}
+  {% if site.comments.disqus %}
+  {% if page.comments %}
+  <script src="//{{ site.comments.disqus }}.disqus.com/embed.js" async></script>
+  {% endif %}
+  {% endif %}
+  <!-- Yeps -->
+  <script>
+    (function (y, e, p) {
+      e.YepsID = 'oXXr9AhgfhxXgDypD';
+      var s = y.createElement('script');
+      e[p] = e[p] || function() {
+        (e[p].q = e[p].q || []).push(arguments);
+      };
+      s.async = true;
+      s.src = 'https://widget.yeps.io/yeps.js';
+      if (y.head) y.head.appendChild(s);
+    })(document, window, 'Yeps');
+  </script>
+
+
+</body>
+</html>
